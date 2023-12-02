@@ -30,9 +30,9 @@ If the line has any length (i.e. it's not yet End-Of-Input)
       n
       ?
 
-Push this cell array containing the names of digits on to the stack
+Push a cell array containing the names of digits on to the stack
 
-        {'one' 'two' 'three' 'four' 'five' 'six' 'seven' 'eight' 'nine'}
+        'one two three four five six seven eight nine'Yb
 
 For each digit name
 
@@ -113,3 +113,10 @@ The end to the main loop over input lines is implicitly done by MATL.
 
 At the end, the final sum value is left in the stack, which MATL automatically prints out.
 
+## Explaining the solution for Part 2 in p2.baseencode.matl
+
+Same as above, except instead of directly having `'one two three four five six seven eight nine'` in the code, we use an encoded form of that string, saving 2 bytes overall.
+
+`'Ct[{&HJ72%]8axpXw08InAAC(TG^Lpo3'` is the result of `matl ' ''one two three four five six seven eight nine'' 2Y2'' ''h F Za'` - we take that list of space-separated digit-names as being encoded in a base of lowercase letters + space character, and re-encode in a base containing all printable ASCII except the `'` character.
+
+This code is much slower because we decode the string afresh for every input. In the best traditions of codegolfing, we save a couple of bytes at the cost of a run time that's three times longer.
