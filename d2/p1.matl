@@ -11,11 +11,9 @@
                                t           % Duplicate the current set of revealed cubes
                                '(\d+) '@gh % create the regex '(\d+) colourname'
                                6&XXggU     % Match and get the digit part alone on stack
-                               tn?         % If there's a match (there are balls of this colour)
-                                  11X@+>?  % and the number of balls is > the total num of cubes of that colour
-                                         H0J(XHx   % zero out the current game ID
-                                        ]
-                                 ]
-                                 v   % If the regex result was empty, vanish it by joining with the cube-set
+                               s           % If there was no match (no balls of this colour), turn [] into 0
+                               11X@+>?     % if the number of balls is > the total num of cubes of that colour
+                                       H0J(XHx   % zero out the current game ID
+                                     ]
                                ]
             x  %  delete the current cube-set
