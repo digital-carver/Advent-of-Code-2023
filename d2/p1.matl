@@ -1,7 +1,7 @@
-[]XHx  % make clipboard H empty
+[]XKx  % make clipboard H empty
 10&Yb"@g        % For each input line i.e. each game
-      tn~?Hs.]  % If the line is empty, this is end-of-input, so sum up the valid Game IDs
-      HX@hXHx   % Push the game ID on to clipboard H
+      tn~?Ks.]  % If the line is empty, this is end-of-input, so sum up the valid Game IDs
+      X@XHx   % Copy the game ID to clipboard H
       59&Yb"@g  % For each reveal of cube-set separated by ';' = 59
             'red green blue'Yb"  % For each colour
                                t           % Duplicate the current set of revealed cubes
@@ -9,10 +9,11 @@
                                6&XXggU     % Match and get the digit part alone on stack
                                tn?         % If there's a match (there are balls of this colour)
                                  11X@+>?   % and the number of balls is > the total num of cubes of that colour
-                                         H0J(XHx    % zero out the current game ID
+                                         0XHx    % zero out the current game ID
                                        ]
                                  ]
                                  v   % If the regex result was empty, join it up with the cube-set
                                ]
             x]  %  delete the current cube-set
+      KHhXKx
       ]
