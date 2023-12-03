@@ -1,0 +1,17 @@
+10&Yb"@g     % For each input line i.e. each game
+      X@XHx  % Store the game ID in clipboard H
+      59&Yb"@g  % For each reveal of cubes separated by ';' = 59
+            'red green blue'Yb"  % For each colour
+                               t           % Duplicate the current set of revealed cubes
+                               '(\d+) '@gh % create the regex '(\d+) colourname'
+                               6&XXggU     % Match and get the digit part alone on stack
+                               tn?         % If there's a match (there are balls of this colour)
+                                 11X@+>?   % and the number of balls is > the total num of cubes of that colour
+                                         0XHx    % zero out the game ID if neither case is true
+                                       ]
+                                 ]
+                               ]
+            vx]  % Join up the empty regex result if any with the cube-set, and delete it
+      ]
+      H
+      X#
